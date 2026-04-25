@@ -1,0 +1,24 @@
+strace (System Call Tracer) is a powerful diagnostic, debugging, and instructional tool for Linux. It intercepts and records the system calls made by a process and the signals received by it.
+
+Think of it as an X-ray or a wiretap for your software. It allows you to see exactly how a program is interacting with the underlying operating system (the kernel) in real-time.
+
+why it is incredibly useful:
+
+Troubleshooting "Black Box" Programs: If a closed-source or unfamiliar application crashes, hangs, or behaves weirdly, strace can tell you exactly what it was trying to do right before it failed.
+
+Finding Missing Files: Ever run a program that just says Error: Configuration missing but doesn't tell you where it's looking for the file? strace will show you exactly which file paths the program is trying (and failing) to open.
+
+Debugging Permissions: If a program is failing due to a "Permission Denied" error, strace will reveal exactly which file or directory is causing the roadblock.
+
+Network Debugging: You can see what IP addresses and ports a program is trying to connect to, or why a connection is being dropped.
+
+Performance Profiling: It can tell you how long each system call takes, helping you identify if a program is lagging because of slow disk reads, network timeouts, or heavy processing.
+
+
+Example commands :- 
+
+
+strace -c ls /tmp 2>&1
+strace -c cat /etc/hostname 2>&1
+strace -e trace=openat,read,write ls /tmp 2>&1 | head -20
+
